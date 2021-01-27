@@ -1,5 +1,6 @@
 package com.alioug.bank.application;
 
+import com.alioug.bank.domain.model.TransactionLog;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,5 +22,18 @@ public class BankApplicationIT {
         bankApplication.makeAWithdrawal(300);
 
         assertThat(bankApplication.getBalance()).isEqualTo(-300);
+    }
+
+    @Test
+    public void should_get_account_history() {
+        bankApplication.makeADeposit(500);
+        bankApplication.makeAWithdrawal(100);
+        bankApplication.makeADeposit(1000);
+        bankApplication.makeAWithdrawal(300);
+
+        TransactionLog transactionLog = bankApplication.getAccountHistory();
+        System.out.println(transactionLog);
+
+        assertThat(transactionLog.size()).isEqualTo(4);
     }
 }
