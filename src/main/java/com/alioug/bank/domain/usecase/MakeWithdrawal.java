@@ -4,23 +4,23 @@ import com.alioug.bank.domain.model.Account;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
 
-public class MakeDeposit {
+public class MakeWithdrawal {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
     private final AccountRepositoryPort accountRepositoryPort;
     private final NowSupplier nowSupplier;
 
-    public MakeDeposit(TransactionRepositoryPort transactionRepositoryPort,
-                       AccountRepositoryPort accountRepositoryPort,
-                       NowSupplier nowSupplier) {
+    public MakeWithdrawal(TransactionRepositoryPort transactionRepositoryPort,
+                          AccountRepositoryPort accountRepositoryPort,
+                          NowSupplier nowSupplier) {
         this.transactionRepositoryPort = transactionRepositoryPort;
         this.accountRepositoryPort = accountRepositoryPort;
         this.nowSupplier = nowSupplier;
     }
 
-    public void execute(Account account, int amount) {
-        account.deposit(amount);
-        transactionRepositoryPort.deposit(account.getId(), amount, nowSupplier.get());
+    public void execute(Account account, int amountInCents) {
+        account.withdrawal(amountInCents);
+        transactionRepositoryPort.withdrawal(account.getId(), amountInCents, nowSupplier.get());
         accountRepositoryPort.save(account);
     }
 }

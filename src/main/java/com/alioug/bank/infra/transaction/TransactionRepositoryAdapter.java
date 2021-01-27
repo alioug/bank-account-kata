@@ -2,7 +2,6 @@ package com.alioug.bank.infra.transaction;
 
 import com.alioug.bank.domain.model.Transaction;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
-import com.alioug.bank.domain.model.Account;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +13,12 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
     @Override
     public void deposit(int accountId, int amountInCents, String date) {
         Transaction depositTransaction = new Transaction(accountId, amountInCents, date);
+        saveTransaction(depositTransaction);
+    }
+
+    @Override
+    public void withdrawal(int accountId, int amountInCents, String date) {
+        Transaction depositTransaction = new Transaction(accountId, -amountInCents, date);
         saveTransaction(depositTransaction);
     }
 

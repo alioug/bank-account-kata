@@ -12,6 +12,14 @@ public class BankApplicationIT {
     public void should_make_a_deposit() {
         bankApplication.makeADeposit(500);
         bankApplication.makeADeposit(300);
+
         assertThat(bankApplication.getBalance()).isEqualTo(800);
+    }
+
+    @Test
+    public void should_make_a_withdrawal() {
+        bankApplication.makeAWithdrawal(300);
+
+        assertThat(bankApplication.getBalance()).isEqualTo(-300);
     }
 }

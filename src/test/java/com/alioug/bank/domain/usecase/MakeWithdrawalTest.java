@@ -16,8 +16,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 
-public class MakeDepositTest {
-
+public class MakeWithdrawalTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
@@ -25,19 +24,19 @@ public class MakeDepositTest {
     private final AccountRepositoryPort accountRepositoryPort = Mockito.mock(AccountRepositoryAdapter.class);
     private final NowSupplier nowSupplier = new NowSupplier();
 
-    private MakeDeposit makeDeposit;
+    private MakeWithdrawal makeWithdrawal;
 
     @Before
     public void init() {
-        makeDeposit = new MakeDeposit(transactionRepositoryPort, accountRepositoryPort, nowSupplier);
+        makeWithdrawal = new MakeWithdrawal(transactionRepositoryPort, accountRepositoryPort, nowSupplier);
     }
 
     @Test
-    public void should_update_transaction_and_account_repositories_when_deposit() {
+    public void should_update_account_and_transaction_repositories_when_withdrawal() {
         Account account = new Account();
-        makeDeposit.execute(account, 500);
+        makeWithdrawal.execute(account, 500);
 
-        verify(transactionRepositoryPort, Mockito.atLeastOnce()).deposit(eq(account.getId()), eq(500), anyString());
+        verify(transactionRepositoryPort, atLeastOnce()).withdrawal(eq(account.getId()), eq(500), anyString());
         verify(accountRepositoryPort, atLeastOnce()).save(any());
     }
 }

@@ -13,6 +13,10 @@ public class Account {
         balanceInCents += amountInCents;
     }
 
+    public void withdrawal(int amountInCents) {
+        balanceInCents -= amountInCents;
+    }
+
     public int getId() {
         return accountId;
     }

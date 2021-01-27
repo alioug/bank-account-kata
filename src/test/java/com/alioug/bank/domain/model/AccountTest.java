@@ -13,4 +13,10 @@ public class AccountTest {
         account.deposit(500);
         Assertions.assertThat(account.getBalanceInCents()).isEqualTo(600);
     }
+
+    @Test
+    public void should_update_balance_after_withdrawal() {
+        account.withdrawal(500);
+        Assertions.assertThat(account.getBalanceInCents()).isEqualTo(-500);
+    }
 }
