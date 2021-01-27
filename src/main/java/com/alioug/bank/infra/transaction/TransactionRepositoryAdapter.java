@@ -1,4 +1,4 @@
-package com.alioug.bank.infra;
+package com.alioug.bank.infra.transaction;
 
 import com.alioug.bank.domain.model.Transaction;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;

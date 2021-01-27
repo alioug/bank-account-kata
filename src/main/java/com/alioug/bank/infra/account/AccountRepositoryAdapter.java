@@ -1,4 +1,4 @@
-package com.alioug.bank.infra;
+package com.alioug.bank.infra.account;
 
 import com.alioug.bank.domain.model.Account;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
