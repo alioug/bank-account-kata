@@ -9,6 +9,11 @@ public class Account {
         balanceInCents = 0;
     }
 
+    Account(int accountId, int balanceInCents) {
+        this.accountId = accountId;
+        this.balanceInCents = balanceInCents;
+    }
+
     public void deposit(int amountInCents) {
         balanceInCents += amountInCents;
     }
@@ -23,5 +28,9 @@ public class Account {
 
     public int getBalanceInCents() {
         return balanceInCents;
+    }
+
+    public Account clone() {
+        return new Account(this.accountId, this.balanceInCents);
     }
 }
