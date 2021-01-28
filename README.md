@@ -8,7 +8,7 @@ Requirements
 - Statement printing
 
 
-##User Stories
+## User Stories
 
 ### US 1:
 In order to save money
