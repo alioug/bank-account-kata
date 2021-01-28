@@ -25,13 +25,13 @@ public class BankApplicationIT {
     }
 
     @Test
-    public void should_get_account_history() {
+    public void should_get_account_statement() {
         bankApplication.makeADeposit(500);
         bankApplication.makeAWithdrawal(100);
         bankApplication.makeADeposit(1000);
         bankApplication.makeAWithdrawal(300);
 
-        TransactionLog transactionLog = bankApplication.getAccountHistory();
+        TransactionLog transactionLog = bankApplication.getAccountStatement();
         System.out.println(transactionLog);
 
         assertThat(transactionLog.size()).isEqualTo(4);

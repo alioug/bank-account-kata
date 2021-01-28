@@ -4,7 +4,7 @@ import com.alioug.bank.domain.model.Account;
 import com.alioug.bank.domain.model.TransactionLog;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
-import com.alioug.bank.domain.usecase.GetAccountHistory;
+import com.alioug.bank.domain.usecase.GetAccountStatement;
 import com.alioug.bank.domain.usecase.MakeDeposit;
 import com.alioug.bank.domain.usecase.MakeWithdrawal;
 import com.alioug.bank.domain.usecase.NowSupplier;
@@ -18,7 +18,7 @@ public class BankApplication {
     private final NowSupplier nowSupplier;
     private final MakeDeposit makeDeposit;
     private final MakeWithdrawal makeWithdrawal;
-    private final GetAccountHistory getAccountHistory;
+    private final GetAccountStatement getAccountStatement;
 
     public BankApplication() {
         accountRepositoryPort = new AccountRepositoryAdapter();
@@ -26,7 +26,7 @@ public class BankApplication {
         nowSupplier = new NowSupplier();
         makeDeposit = new MakeDeposit(transactionRepositoryPort, accountRepositoryPort, nowSupplier);
         makeWithdrawal = new MakeWithdrawal(transactionRepositoryPort, accountRepositoryPort, nowSupplier);
-        getAccountHistory = new GetAccountHistory(transactionRepositoryPort, accountRepositoryPort);
+        getAccountStatement = new GetAccountStatement(transactionRepositoryPort, accountRepositoryPort);
     }
 
     public void makeADeposit(int amountInCents) {
@@ -44,7 +44,7 @@ public class BankApplication {
         return account.getBalanceInCents();
     }
 
-    public TransactionLog getAccountHistory() {
-        return  getAccountHistory.execute();
+    public TransactionLog getAccountStatement() {
+        return  getAccountStatement.execute();
     }
 }

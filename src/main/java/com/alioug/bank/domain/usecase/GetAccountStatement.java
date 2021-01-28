@@ -8,13 +8,13 @@ import com.alioug.bank.domain.port.TransactionRepositoryPort;
 
 import java.util.List;
 
-public class GetAccountHistory {
+public class GetAccountStatement {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
     private final AccountRepositoryPort accountRepositoryPort;
 
-    public GetAccountHistory(TransactionRepositoryPort transactionRepositoryPort,
-                             AccountRepositoryPort accountRepositoryPort) {
+    public GetAccountStatement(TransactionRepositoryPort transactionRepositoryPort,
+                               AccountRepositoryPort accountRepositoryPort) {
         this.transactionRepositoryPort = transactionRepositoryPort;
         this.accountRepositoryPort = accountRepositoryPort;
     }
