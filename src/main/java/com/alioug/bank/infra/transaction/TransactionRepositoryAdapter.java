@@ -4,6 +4,7 @@ import com.alioug.bank.domain.model.Account;
 import com.alioug.bank.domain.model.Transaction;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
 
     @Override
     public List<Transaction> listAllTransactions(Account account) {
-        return transactions;
+        return Collections.unmodifiableList(transactions);
     }
 
     private void saveTransaction(Transaction transaction) {

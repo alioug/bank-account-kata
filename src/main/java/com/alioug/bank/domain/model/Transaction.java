@@ -1,5 +1,7 @@
 package com.alioug.bank.domain.model;
 
+import java.util.Objects;
+
 public class Transaction {
 
     private final int accountId;
@@ -18,5 +20,18 @@ public class Transaction {
 
     public String getDate() {
         return date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return accountId == that.accountId && amountInCents == that.amountInCents && date.equals(that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountId, amountInCents, date);
     }
 }
