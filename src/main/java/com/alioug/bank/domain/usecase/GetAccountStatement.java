@@ -1,12 +1,9 @@
 package com.alioug.bank.domain.usecase;
 
 import com.alioug.bank.domain.model.Account;
-import com.alioug.bank.domain.model.Transaction;
 import com.alioug.bank.domain.model.TransactionLog;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
-
-import java.util.List;
 
 public class GetAccountStatement {
 
@@ -21,11 +18,9 @@ public class GetAccountStatement {
 
     public TransactionLog execute() {
         Account account = accountRepositoryPort.getAccount();
-        List<Transaction> transactions = transactionRepositoryPort.listAllTransactions(account);
         TransactionLog transactionLog = new TransactionLog(0);
-        for (Transaction transaction : transactions) {
-            transactionLog.appendLine(transaction);
-        }
+        transactionRepositoryPort.listAllTransactions(account)
+                .forEach(transactionLog::appendLine);
         return transactionLog;
     }
 }

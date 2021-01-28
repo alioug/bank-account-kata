@@ -2,7 +2,7 @@ package com.alioug.bank.domain.model;
 
 public class Transaction {
 
-    private int accountId;
+    private final int accountId;
     private final int amountInCents;
     private final String date;
 

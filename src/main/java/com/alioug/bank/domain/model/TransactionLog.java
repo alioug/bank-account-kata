@@ -5,6 +5,7 @@ import java.util.List;
 
 public class TransactionLog {
 
+    public static final String STATEMENT_HEADER = "date\t\t\t\tamount\t\tbalance\n";
     private final List<String> transactionLog = new LinkedList<>();
     private int balance;
 
@@ -39,7 +40,7 @@ public class TransactionLog {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("date\t\t\t\tamount\t\tbalance\n");
+        sb.append(STATEMENT_HEADER);
         for (String line : transactionLog) {
             sb.append(line);
         }
