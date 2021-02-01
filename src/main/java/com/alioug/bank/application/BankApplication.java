@@ -8,8 +8,6 @@ import com.alioug.bank.domain.usecase.GetAccountStatement;
 import com.alioug.bank.domain.usecase.MakeDeposit;
 import com.alioug.bank.domain.usecase.MakeWithdrawal;
 import com.alioug.bank.domain.usecase.NowSupplier;
-import com.alioug.bank.infra.account.AccountRepositoryAdapter;
-import com.alioug.bank.infra.transaction.TransactionRepositoryAdapter;
 
 public class BankApplication {
 
@@ -20,13 +18,15 @@ public class BankApplication {
     private final MakeWithdrawal makeWithdrawal;
     private final GetAccountStatement getAccountStatement;
 
-    public BankApplication() {
-        accountRepositoryPort = new AccountRepositoryAdapter();
-        transactionRepositoryPort = new TransactionRepositoryAdapter();
-        nowSupplier = new NowSupplier();
-        makeDeposit = new MakeDeposit(transactionRepositoryPort, accountRepositoryPort, nowSupplier);
-        makeWithdrawal = new MakeWithdrawal(transactionRepositoryPort, accountRepositoryPort, nowSupplier);
-        getAccountStatement = new GetAccountStatement(transactionRepositoryPort, accountRepositoryPort);
+    public BankApplication(AccountRepositoryPort accountRepositoryPort,
+                           TransactionRepositoryPort transactionRepositoryPort,
+                           NowSupplier nowSupplier) {
+        this.accountRepositoryPort = accountRepositoryPort;
+        this.transactionRepositoryPort = transactionRepositoryPort;
+        this.nowSupplier = nowSupplier;
+        makeDeposit = new MakeDeposit(this.transactionRepositoryPort, this.accountRepositoryPort, this.nowSupplier);
+        makeWithdrawal = new MakeWithdrawal(this.transactionRepositoryPort, this.accountRepositoryPort, this.nowSupplier);
+        getAccountStatement = new GetAccountStatement(this.transactionRepositoryPort, this.accountRepositoryPort);
     }
 
     public void makeADeposit(int amountInCents) {

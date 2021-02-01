@@ -12,7 +12,7 @@ public class TransactionLogTest {
     public void should_append_line() {
         transactionLog.appendLine(new Transaction(0, 100, "2020-01-01"));
 
-        assertThat(transactionLog.size()).isEqualTo(1);
+        assertThat(transactionLog.lines()).containsExactly("2020-01-01\t1,00\t\t1,00\n");
     }
 
     @Test

@@ -46,6 +46,9 @@ public class GetAccountStatementTest {
 
         TransactionLog accountStatement = getAccountStatement.execute();
 
-        Assertions.assertThat(accountStatement.size()).isEqualTo(3);
+        Assertions.assertThat(accountStatement.lines()).containsExactly(
+                "2020-01-01\t1,00\t\t1,00\n",
+                "2020-01-02\t5,00\t\t6,00\n",
+                "2020-01-03\t-3,00\t\t3,00\n");
     }
 }

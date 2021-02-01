@@ -1,5 +1,6 @@
 package com.alioug.bank.domain.model;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,6 +36,10 @@ public class TransactionLog {
 
     public int size() {
         return transactionLog.size();
+    }
+
+    public List<String> lines() {
+        return Collections.unmodifiableList(transactionLog);
     }
 
     @Override
