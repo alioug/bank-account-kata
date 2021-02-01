@@ -3,8 +3,9 @@ package com.alioug.bank.application;
 import com.alioug.bank.domain.model.TransactionLog;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
-import com.alioug.bank.domain.usecase.NowSupplier;
 import com.alioug.bank.infra.account.AccountRepositoryAdapter;
+import com.alioug.bank.infra.time.NowSupplier;
+import com.alioug.bank.infra.time.NowSupplierMock;
 import com.alioug.bank.infra.transaction.TransactionRepositoryAdapter;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,13 +57,6 @@ public class BankApplicationIT {
                 "01/01/2021 00:00\t10,00\t\t14,00\n",
                 "01/01/2021 00:00\t-3,00\t\t11,00\n"
         );
-    }
-
-    public static class NowSupplierMock extends NowSupplier {
-        @Override
-        public String get() {
-            return "01/01/2021 00:00";
-        }
     }
 
 }

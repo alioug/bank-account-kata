@@ -2,8 +2,10 @@ package com.alioug.bank.domain.usecase;
 
 import com.alioug.bank.domain.model.Account;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
+import com.alioug.bank.domain.port.NowSupplierPort;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
 import com.alioug.bank.infra.account.AccountRepositoryAdapter;
+import com.alioug.bank.infra.time.NowSupplierMock;
 import com.alioug.bank.infra.transaction.TransactionRepositoryAdapter;
 import org.junit.Before;
 import org.junit.Rule;
@@ -22,7 +24,7 @@ public class MakeWithdrawalTest {
 
     private final TransactionRepositoryPort transactionRepositoryPort = Mockito.mock(TransactionRepositoryAdapter.class);
     private final AccountRepositoryPort accountRepositoryPort = Mockito.mock(AccountRepositoryAdapter.class);
-    private final NowSupplier nowSupplier = new NowSupplier();
+    private final NowSupplierPort nowSupplier = new NowSupplierMock();
 
     private MakeWithdrawal makeWithdrawal;
 

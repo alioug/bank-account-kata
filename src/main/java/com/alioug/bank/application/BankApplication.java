@@ -3,29 +3,29 @@ package com.alioug.bank.application;
 import com.alioug.bank.domain.model.Account;
 import com.alioug.bank.domain.model.TransactionLog;
 import com.alioug.bank.domain.port.AccountRepositoryPort;
+import com.alioug.bank.domain.port.NowSupplierPort;
 import com.alioug.bank.domain.port.TransactionRepositoryPort;
 import com.alioug.bank.domain.usecase.GetAccountStatement;
 import com.alioug.bank.domain.usecase.MakeDeposit;
 import com.alioug.bank.domain.usecase.MakeWithdrawal;
-import com.alioug.bank.domain.usecase.NowSupplier;
 
 public class BankApplication {
 
     private final AccountRepositoryPort accountRepositoryPort;
     private final TransactionRepositoryPort transactionRepositoryPort;
-    private final NowSupplier nowSupplier;
+    private final NowSupplierPort nowSupplierPort;
     private final MakeDeposit makeDeposit;
     private final MakeWithdrawal makeWithdrawal;
     private final GetAccountStatement getAccountStatement;
 
     public BankApplication(AccountRepositoryPort accountRepositoryPort,
                            TransactionRepositoryPort transactionRepositoryPort,
-                           NowSupplier nowSupplier) {
+                           NowSupplierPort nowSupplierPort) {
         this.accountRepositoryPort = accountRepositoryPort;
         this.transactionRepositoryPort = transactionRepositoryPort;
-        this.nowSupplier = nowSupplier;
-        makeDeposit = new MakeDeposit(this.transactionRepositoryPort, this.accountRepositoryPort, this.nowSupplier);
-        makeWithdrawal = new MakeWithdrawal(this.transactionRepositoryPort, this.accountRepositoryPort, this.nowSupplier);
+        this.nowSupplierPort = nowSupplierPort;
+        makeDeposit = new MakeDeposit(this.transactionRepositoryPort, this.accountRepositoryPort, this.nowSupplierPort);
+        makeWithdrawal = new MakeWithdrawal(this.transactionRepositoryPort, this.accountRepositoryPort, this.nowSupplierPort);
         getAccountStatement = new GetAccountStatement(this.transactionRepositoryPort, this.accountRepositoryPort);
     }
 
