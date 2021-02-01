@@ -1,8 +1,8 @@
 package com.alioug.bank.application;
 
-import com.alioug.bank.domain.model.TransactionLog;
-import com.alioug.bank.domain.port.AccountRepositoryPort;
-import com.alioug.bank.domain.port.TransactionRepositoryPort;
+import com.alioug.bank.domain.account.AccountRepositoryPort;
+import com.alioug.bank.domain.transaction.TransactionLog;
+import com.alioug.bank.domain.transaction.TransactionRepositoryPort;
 import com.alioug.bank.infra.account.AccountRepositoryAdapter;
 import com.alioug.bank.infra.time.NowSupplier;
 import com.alioug.bank.infra.time.NowSupplierMock;

@@ -1,4 +1,4 @@
-package com.alioug.bank.domain.port;
+package com.alioug.bank.domain.transaction;
 
 public interface NowSupplierPort {
 

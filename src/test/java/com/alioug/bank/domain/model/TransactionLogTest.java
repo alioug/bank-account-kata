@@ -1,5 +1,7 @@
 package com.alioug.bank.domain.model;
 
+import com.alioug.bank.domain.transaction.Transaction;
+import com.alioug.bank.domain.transaction.TransactionLog;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

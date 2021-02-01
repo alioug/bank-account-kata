@@ -1,6 +1,6 @@
 package com.alioug.bank.infra.account;
 
-import com.alioug.bank.domain.model.Account;
+import com.alioug.bank.domain.account.Account;
 import org.junit.Before;
 import org.junit.Test;
 

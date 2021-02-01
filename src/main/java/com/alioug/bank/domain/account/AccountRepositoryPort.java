@@ -1,6 +1,4 @@
-package com.alioug.bank.domain.port;
-
-import com.alioug.bank.domain.model.Account;
+package com.alioug.bank.domain.account;
 
 public interface AccountRepositoryPort {
 

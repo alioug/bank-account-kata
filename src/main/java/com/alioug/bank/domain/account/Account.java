@@ -1,4 +1,4 @@
-package com.alioug.bank.domain.model;
+package com.alioug.bank.domain.account;
 
 public class Account {
 

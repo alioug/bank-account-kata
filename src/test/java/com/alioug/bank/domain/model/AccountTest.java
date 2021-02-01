@@ -1,5 +1,6 @@
 package com.alioug.bank.domain.model;
 
+import com.alioug.bank.domain.account.Account;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

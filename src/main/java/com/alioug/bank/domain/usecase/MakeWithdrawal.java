@@ -1,9 +1,9 @@
 package com.alioug.bank.domain.usecase;
 
-import com.alioug.bank.domain.model.Account;
-import com.alioug.bank.domain.port.AccountRepositoryPort;
-import com.alioug.bank.domain.port.NowSupplierPort;
-import com.alioug.bank.domain.port.TransactionRepositoryPort;
+import com.alioug.bank.domain.account.Account;
+import com.alioug.bank.domain.account.AccountRepositoryPort;
+import com.alioug.bank.domain.transaction.NowSupplierPort;
+import com.alioug.bank.domain.transaction.TransactionRepositoryPort;
 
 public class MakeWithdrawal {
 

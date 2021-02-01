@@ -1,7 +1,6 @@
-package com.alioug.bank.domain.port;
+package com.alioug.bank.domain.transaction;
 
-import com.alioug.bank.domain.model.Account;
-import com.alioug.bank.domain.model.Transaction;
+import com.alioug.bank.domain.account.Account;
 
 import java.util.List;
 

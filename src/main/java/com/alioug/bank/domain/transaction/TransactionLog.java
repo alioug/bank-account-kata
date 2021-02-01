@@ -1,4 +1,4 @@
-package com.alioug.bank.domain.model;
+package com.alioug.bank.domain.transaction;
 
 import java.util.Collections;
 import java.util.LinkedList;

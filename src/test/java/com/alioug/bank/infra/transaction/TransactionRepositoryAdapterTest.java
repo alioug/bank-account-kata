@@ -1,7 +1,7 @@
 package com.alioug.bank.infra.transaction;
 
-import com.alioug.bank.domain.model.Account;
-import com.alioug.bank.domain.model.Transaction;
+import com.alioug.bank.domain.account.Account;
+import com.alioug.bank.domain.transaction.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 

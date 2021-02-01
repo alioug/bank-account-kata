@@ -1,6 +1,6 @@
 package com.alioug.bank.infra.time;
 
-import com.alioug.bank.domain.port.NowSupplierPort;
+import com.alioug.bank.domain.transaction.NowSupplierPort;
 
 import java.time.Instant;
 import java.time.ZoneId;
