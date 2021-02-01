@@ -9,7 +9,7 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
     @Override
     public Account getAccount() {
-        return uniqueAccount.clone();
+        return new Account(uniqueAccount);
     }
 
     @Override
