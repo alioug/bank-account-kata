@@ -19,4 +19,14 @@ public class AccountTest {
         account.withdrawal(500);
         Assertions.assertThat(account.getBalanceInCents()).isEqualTo(-500);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_only_accept_positive_values_for_deposit() {
+        account.deposit(-100);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_only_accept_positive_values_for_withdrawal() {
+        account.withdrawal(-100);
+    }
 }

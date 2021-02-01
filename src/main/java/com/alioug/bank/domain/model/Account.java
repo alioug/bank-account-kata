@@ -15,10 +15,16 @@ public class Account {
     }
 
     public void deposit(int amountInCents) {
+        if(amountInCents < 0) {
+            throw new IllegalArgumentException("amount must be positive : " + amountInCents);
+        }
         balanceInCents += amountInCents;
     }
 
     public void withdrawal(int amountInCents) {
+        if(amountInCents < 0) {
+            throw new IllegalArgumentException("amount must be positive : " + amountInCents);
+        }
         balanceInCents -= amountInCents;
     }
 
