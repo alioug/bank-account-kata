@@ -1,38 +1,45 @@
 package com.alioug.bank.domain.account;
 
+import java.math.BigDecimal;
+
 public class Account {
 
     private String accountId;
-    private int balanceInCents;
+    private BigDecimal balance;
 
-    public Account() {
-        balanceInCents = 0;
+    public Account(String accountId) {
+        this.accountId = accountId;
+        balance = new BigDecimal(0);
     }
 
     public Account(Account account) {
         this.accountId = account.accountId;
-        this.balanceInCents = account.balanceInCents;
+        this.balance = account.balance;
     }
 
-    public void deposit(int amountInCents) {
-        if(amountInCents < 0) {
-            throw new IllegalArgumentException("amount must be positive : " + amountInCents);
+    public void deposit(BigDecimal amount) {
+        if(isNegative(amount)) {
+            throw new IllegalArgumentException("amount must be positive : " + amount);
         }
-        balanceInCents += amountInCents;
+        balance = balance.add(amount);
     }
 
-    public void withdrawal(int amountInCents) {
-        if(amountInCents < 0) {
-            throw new IllegalArgumentException("amount must be positive : " + amountInCents);
+    public void withdrawal(BigDecimal amount) {
+        if(isNegative(amount)) {
+            throw new IllegalArgumentException("amount must be positive : " + amount);
         }
-        balanceInCents -= amountInCents;
+        balance = balance.subtract(amount);
+    }
+
+    private boolean isNegative(BigDecimal amount) {
+        return amount.signum() < 0;
     }
 
     public String getId() {
         return accountId;
     }
 
-    public int getBalanceInCents() {
-        return balanceInCents;
+    public BigDecimal getBalance() {
+        return balance;
     }
 }

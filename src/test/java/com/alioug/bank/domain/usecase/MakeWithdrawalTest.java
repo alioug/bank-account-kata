@@ -14,6 +14,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.math.BigDecimal;
+
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
@@ -35,10 +37,10 @@ public class MakeWithdrawalTest {
 
     @Test
     public void should_update_account_and_transaction_repositories_when_withdrawal() {
-        Account account = new Account();
-        makeWithdrawal.execute(account, 500);
+        Account account = new Account("0");
+        makeWithdrawal.execute(account, new BigDecimal(500));
 
-        verify(transactionRepositoryPort, atLeastOnce()).withdrawal(eq(account.getId()), eq(500), anyString());
+        verify(transactionRepositoryPort, atLeastOnce()).withdrawal(eq(account.getId()), eq(new BigDecimal(500)), anyString());
         verify(accountRepositoryPort, atLeastOnce()).save(any());
     }
 }

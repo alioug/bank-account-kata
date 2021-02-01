@@ -1,5 +1,6 @@
 package com.alioug.bank.domain.transaction;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,29 +9,29 @@ public class TransactionLog {
 
     public static final String STATEMENT_HEADER = "date\t\t\t\tamount\t\tbalance\n";
     private final List<String> transactionLog = new LinkedList<>();
-    private int balance;
+    private BigDecimal balance;
 
-    public TransactionLog(int initialBalance) {
+    public TransactionLog(BigDecimal initialBalance) {
         balance = initialBalance;
     }
 
     public TransactionLog() {
-        this(0);
+        this(new BigDecimal(0));
     }
 
     public void appendLine(Transaction transaction) {
-        balance += transaction.getAmountInCents();
+        balance = balance.add(transaction.getamount());
         transactionLog.add( formatLine(transaction, balance) );
     }
 
-    private String formatLine(Transaction transaction, int currentBalance) {
+    private String formatLine(Transaction transaction, BigDecimal currentBalance) {
         return transaction.getDate() + "\t" +
-                formatDecimal(transaction.getAmountInCents()) + "\t\t" +
-                formatDecimal(currentBalance) + "\n";
+                transaction.getamount() + "\t\t" +
+                currentBalance + "\n";
     }
 
-    private String formatDecimal(int amountInCents) {
-        Double amount = amountInCents / 100d;
+    private String formatDecimal(int amount) {
+        Double amount = amount / 100d;
         return String.format("%.2f", amount);
     }
 

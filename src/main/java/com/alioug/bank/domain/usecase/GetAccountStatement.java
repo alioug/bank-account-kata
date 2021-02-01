@@ -18,7 +18,7 @@ public class GetAccountStatement {
 
     public TransactionLog execute() {
         Account account = accountRepositoryPort.getAccount();
-        TransactionLog transactionLog = new TransactionLog(0);
+        TransactionLog transactionLog = new TransactionLog();
         transactionRepositoryPort.listAllTransactions(account)
                 .forEach(transactionLog::appendLine);
         return transactionLog;

@@ -13,6 +13,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.math.BigDecimal;
+
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
@@ -35,10 +37,10 @@ public class MakeDepositTest {
 
     @Test
     public void should_update_transaction_and_account_repositories_when_deposit() {
-        Account account = new Account();
-        makeDeposit.execute(account, 500);
+        Account account = new Account("0");
+        makeDeposit.execute(account, new BigDecimal(500));
 
-        verify(transactionRepositoryPort, Mockito.atLeastOnce()).deposit(eq(account.getId()), eq(500), anyString());
+        verify(transactionRepositoryPort, Mockito.atLeastOnce()).deposit(eq(account.getId()), eq(new BigDecimal(500)), anyString());
         verify(accountRepositoryPort, atLeastOnce()).save(any());
     }
 }

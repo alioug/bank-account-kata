@@ -9,6 +9,8 @@ import com.alioug.bank.domain.usecase.GetAccountStatement;
 import com.alioug.bank.domain.usecase.MakeDeposit;
 import com.alioug.bank.domain.usecase.MakeWithdrawal;
 
+import java.math.BigDecimal;
+
 public class BankApplication {
 
     private final AccountRepositoryPort accountRepositoryPort;
@@ -29,19 +31,19 @@ public class BankApplication {
         getAccountStatement = new GetAccountStatement(this.transactionRepositoryPort, this.accountRepositoryPort);
     }
 
-    public void makeADeposit(int amountInCents) {
+    public void makeADeposit(BigDecimal amount) {
         Account account = accountRepositoryPort.getAccount();
-        makeDeposit.execute(account, amountInCents);
+        makeDeposit.execute(account, amount);
     }
 
-    public void makeAWithdrawal(int amountInCents) {
+    public void makeAWithdrawal(BigDecimal amount) {
         Account account = accountRepositoryPort.getAccount();
-        makeWithdrawal.execute(account, amountInCents);
+        makeWithdrawal.execute(account, amount);
     }
 
-    public int getBalance() {
+    public BigDecimal getBalance() {
         Account account = accountRepositoryPort.getAccount();
-        return account.getBalanceInCents();
+        return account.getBalance();
     }
 
     public TransactionLog getAccountStatement() {

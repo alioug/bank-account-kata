@@ -5,7 +5,7 @@ import com.alioug.bank.domain.account.AccountRepositoryPort;
 
 public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
-    private Account uniqueAccount = new Account();
+    private Account uniqueAccount = new Account("0");
 
     @Override
     public Account getAccount() {

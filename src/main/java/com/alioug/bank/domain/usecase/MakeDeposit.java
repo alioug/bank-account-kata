@@ -5,6 +5,8 @@ import com.alioug.bank.domain.account.AccountRepositoryPort;
 import com.alioug.bank.domain.transaction.NowSupplierPort;
 import com.alioug.bank.domain.transaction.TransactionRepositoryPort;
 
+import java.math.BigDecimal;
+
 public class MakeDeposit {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
@@ -19,7 +21,7 @@ public class MakeDeposit {
         this.nowSupplierPort = nowSupplier;
     }
 
-    public void execute(Account account, int amount) {
+    public void execute(Account account, BigDecimal amount) {
         account.deposit(amount);
         transactionRepositoryPort.deposit(account.getId(), amount, nowSupplierPort.get());
         accountRepositoryPort.save(account);

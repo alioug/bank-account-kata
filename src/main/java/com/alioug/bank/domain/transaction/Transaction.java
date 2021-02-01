@@ -1,21 +1,22 @@
 package com.alioug.bank.domain.transaction;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Transaction {
 
     private final String accountId;
-    private final int amountInCents;
+    private final BigDecimal amount;
     private final String date;
 
-    public Transaction(String accountId, int amountInCents, String date) {
+    public Transaction(String accountId, BigDecimal amount, String date) {
         this.accountId = accountId;
-        this.amountInCents = amountInCents;
+        this.amount = amount;
         this.date = date;
     }
 
-    public int getAmountInCents() {
-        return amountInCents;
+    public BigDecimal getamount() {
+        return amount;
     }
 
     public String getDate() {
@@ -27,11 +28,11 @@ public class Transaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return accountId == that.accountId && amountInCents == that.amountInCents && date.equals(that.date);
+        return accountId.equals(that.accountId) && amount.equals(that.amount) && date.equals(that.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountId, amountInCents, date);
+        return Objects.hash(accountId, amount, date);
     }
 }

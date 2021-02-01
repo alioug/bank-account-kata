@@ -5,6 +5,8 @@ import com.alioug.bank.domain.account.AccountRepositoryPort;
 import com.alioug.bank.domain.transaction.NowSupplierPort;
 import com.alioug.bank.domain.transaction.TransactionRepositoryPort;
 
+import java.math.BigDecimal;
+
 public class MakeWithdrawal {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
@@ -19,9 +21,9 @@ public class MakeWithdrawal {
         this.nowSupplierPort = nowSupplierPort;
     }
 
-    public void execute(Account account, int amountInCents) {
-        account.withdrawal(amountInCents);
-        transactionRepositoryPort.withdrawal(account.getId(), amountInCents, nowSupplierPort.get());
+    public void execute(Account account, BigDecimal amount) {
+        account.withdrawal(amount);
+        transactionRepositoryPort.withdrawal(account.getId(), amount, nowSupplierPort.get());
         accountRepositoryPort.save(account);
     }
 }

@@ -4,6 +4,8 @@ import com.alioug.bank.domain.account.Account;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AccountRepositoryAdapterTest {
@@ -18,7 +20,7 @@ public class AccountRepositoryAdapterTest {
     @Test
     public void should_save_account() {
         Account account = accountRepositoryAdapter.getAccount();
-        account.deposit(100);
+        account.deposit(new BigDecimal(100));
 
         accountRepositoryAdapter.save(account);
 
@@ -31,10 +33,10 @@ public class AccountRepositoryAdapterTest {
     @Test
     public void should_not_modify_account_without_save() {
         Account account = accountRepositoryAdapter.getAccount();
-        account.deposit(100000);
+        account.deposit(new BigDecimal(100000));
 
         Account savedAccount = accountRepositoryAdapter.getAccount();
 
-        assertThat(savedAccount.getBalanceInCents()).isEqualTo(0);
+        assertThat(savedAccount.getBalance()).isEqualTo(new BigDecimal(0));
     }
 }
