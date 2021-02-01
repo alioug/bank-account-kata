@@ -2,7 +2,7 @@ package com.alioug.bank.domain.account;
 
 public class Account {
 
-    private int accountId;
+    private String accountId;
     private int balanceInCents;
 
     public Account() {
@@ -28,7 +28,7 @@ public class Account {
         balanceInCents -= amountInCents;
     }
 
-    public int getId() {
+    public String getId() {
         return accountId;
     }
 

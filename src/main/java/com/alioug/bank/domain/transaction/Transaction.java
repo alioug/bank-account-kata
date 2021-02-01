@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Transaction {
 
-    private final int accountId;
+    private final String accountId;
     private final int amountInCents;
     private final String date;
 
-    public Transaction(int accountId, int amountInCents, String date) {
+    public Transaction(String accountId, int amountInCents, String date) {
         this.accountId = accountId;
         this.amountInCents = amountInCents;
         this.date = date;

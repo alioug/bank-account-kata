@@ -13,13 +13,13 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
     private final List<Transaction> transactions = new LinkedList<>();
 
     @Override
-    public void deposit(int accountId, int amountInCents, String date) {
+    public void deposit(String accountId, int amountInCents, String date) {
         Transaction depositTransaction = new Transaction(accountId, amountInCents, date);
         saveTransaction(depositTransaction);
     }
 
     @Override
-    public void withdrawal(int accountId, int amountInCents, String date) {
+    public void withdrawal(String accountId, int amountInCents, String date) {
         Transaction withdrawalTransaction = new Transaction(accountId, -amountInCents, date);
         saveTransaction(withdrawalTransaction);
     }

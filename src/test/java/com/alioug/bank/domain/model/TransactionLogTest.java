@@ -12,14 +12,14 @@ public class TransactionLogTest {
 
     @Test
     public void should_append_line() {
-        transactionLog.appendLine(new Transaction(0, 100, "2020-01-01"));
+        transactionLog.appendLine(new Transaction("0", 100, "2020-01-01"));
 
         assertThat(transactionLog.lines()).containsExactly("2020-01-01\t1,00\t\t1,00\n");
     }
 
     @Test
     public void should_print_and_format_lines() {
-        transactionLog.appendLine(new Transaction(0, 100, "2020-01-01"));
+        transactionLog.appendLine(new Transaction("0", 100, "2020-01-01"));
 
         assertThat(transactionLog.toString()).isEqualTo(
                 "date\t\t\t\tamount\t\tbalance\n" +

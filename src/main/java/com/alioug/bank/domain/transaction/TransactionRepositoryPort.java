@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface TransactionRepositoryPort {
 
-    void deposit(int accountId, int amountInCents, String date);
+    void deposit(String accountId, int amountInCents, String date);
 
-    void withdrawal(int accountId, int amountInCents, String date);
+    void withdrawal(String accountId, int amountInCents, String date);
 
     List<Transaction> listAllTransactions(Account account);
 }
