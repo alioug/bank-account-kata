@@ -20,23 +20,14 @@ public class TransactionLog {
     }
 
     public void appendLine(Transaction transaction) {
-        balance = balance.add(transaction.getamount());
+        balance = balance.add(transaction.getAmount());
         transactionLog.add( formatLine(transaction, balance) );
     }
 
     private String formatLine(Transaction transaction, BigDecimal currentBalance) {
         return transaction.getDate() + "\t" +
-                transaction.getamount() + "\t\t" +
+                transaction.getAmount() + "\t\t" +
                 currentBalance + "\n";
-    }
-
-    private String formatDecimal(int amount) {
-        Double amount = amount / 100d;
-        return String.format("%.2f", amount);
-    }
-
-    public int size() {
-        return transactionLog.size();
     }
 
     public List<String> lines() {

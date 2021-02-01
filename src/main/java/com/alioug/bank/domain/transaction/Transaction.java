@@ -15,7 +15,7 @@ public class Transaction {
         this.date = date;
     }
 
-    public BigDecimal getamount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
